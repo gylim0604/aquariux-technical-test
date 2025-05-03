@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Location } from './types';
 import { useWeather } from './useWeatherSummary';
 
@@ -6,7 +5,7 @@ export default function WeatherSummary(params: Location) {
 	const { data, loading, error } = useWeather(params);
 
 	function getCurrentDate() {
-		const options = {
+		const options: Intl.DateTimeFormatOptions = {
 			month: 'long', // 'long' gives full month name
 			day: '2-digit',
 			year: 'numeric',
@@ -23,10 +22,10 @@ export default function WeatherSummary(params: Location) {
 	if (error || !data) return <p> Error: {error}</p>;
 
 	return (
-		<div className='rounded-xl max-w-xs bg-white shadow-md px-3 py-4 grid grid-rows-[1fr_3fr_2fr]'>
+		<div className='rounded-xl w-md bg-white shadow-md p-4 grid grid-rows-[1fr_3fr_2fr]'>
 			<div>{getCurrentDate()}</div>
 			<div className='flex flex-row justify-evenly'>
-				<img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}.png`} />
+				<img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}.png`} alt='weather icon' />
 				<span>
 					<p className='text-4xl font-semibold tracking-wider'>{data?.main.temp.toFixed(0)}&deg;C</p>
 					<p className='text-zinc-700 first-letter:uppercase'>{data.weather[0]?.description}</p>

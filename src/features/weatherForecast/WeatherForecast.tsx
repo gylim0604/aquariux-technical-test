@@ -23,9 +23,9 @@ export default function WeatherForecast(params: Location) {
 	if (error || !data) return <p> Error: {error}</p>;
 
 	return (
-		<div className='mt-4'>
+		<>
 			<h4 className='font-semibold mb-4'>5-day Forecast(3 Hours)</h4>
-			<div className='rounded-xl w-md bg-white shadow-md p-4'>
+			<div className='rounded-xl w-md bg-white shadow-md p-4 '>
 				{data.map(({ date, entries }) => (
 					<div key={date} className='mt-8 first-of-type:mt-0'>
 						<h3 className='text-md text-zinc-400 mb-8 '>{convertDateString(date)}</h3>
@@ -44,6 +44,6 @@ export default function WeatherForecast(params: Location) {
 					</div>
 				))}
 			</div>
-		</div>
+		</>
 	);
 }

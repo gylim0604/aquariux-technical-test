@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Location } from '../weatherSummary/types';
+import { Location } from '../../types/location';
 import { MapPin, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 

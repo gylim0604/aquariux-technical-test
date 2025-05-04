@@ -1,5 +1,6 @@
 import { get } from '../../lib/apiClient';
-import { Location, WeatherData } from './types';
+import { WeatherData } from '../../types/weatherSummary';
+import { Location } from '../../types/location';
 
 const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
 

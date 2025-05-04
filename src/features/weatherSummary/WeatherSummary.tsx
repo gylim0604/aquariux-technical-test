@@ -1,4 +1,4 @@
-import { Location } from './types';
+import { Location } from '../../types/location';
 import { useWeather } from './useWeatherSummary';
 
 export default function WeatherSummary(params: Location) {

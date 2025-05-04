@@ -53,8 +53,3 @@ export interface Sys {
 	sunrise: number;
 	sunset: number;
 }
-
-export interface Location {
-	city: string;
-	countryCode: string;
-}

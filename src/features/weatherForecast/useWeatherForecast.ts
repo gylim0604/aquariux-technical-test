@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getWeatherForecast } from './weatherForecast';
-import { Location } from '../weatherSummary/types';
-import { ForecastData, GroupedForecast, List } from './types';
+import { Location } from '../../types/location';
+import { ForecastData, GroupedForecast, List } from '../../types/forecast';
 
 function processForecastData(data: ForecastData): any {
 	const grouped = data.list.reduce((prev: any, curr: List) => {

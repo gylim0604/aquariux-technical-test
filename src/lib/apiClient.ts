@@ -1,5 +1,3 @@
-import { useParams } from 'react-router-dom';
-
 const BASE_URL = 'https://api.openweathermap.org/';
 const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
 

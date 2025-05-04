@@ -4,12 +4,11 @@ import { GeoResult, Location, LocationStore } from '../../types/location';
 
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { useShallow } from 'zustand/shallow';
 
 export const useLocationStore = create<LocationStore>()(
 	persist(
 		(set) => ({
-			currentLocation: null,
+			currentLocation: { city: 'Singapore', countryCode: 'SG', lat: 1.2907, lon: 103.8462 },
 			searchHistory: [],
 			setLocation: (loc) => set({ currentLocation: loc }),
 			addToHistory: (loc) =>
@@ -29,12 +28,7 @@ export function useSearchLocation() {
 	const [result, setResult] = useState<GeoResult[] | null>(null);
 	const [error, setError] = useState<string | null>(null);
 	const [isLoading, setIsLoading] = useState(false);
-	const { setLocation, addToHistory } = useLocationStore(
-		useShallow((state) => ({
-			setLocation: state.setLocation,
-			addToHistory: state.addToHistory,
-		}))
-	);
+	const { setLocation, addToHistory } = useLocationStore();
 
 	async function search(query: string): Promise<void> {
 		setIsLoading(true);
@@ -49,6 +43,8 @@ export function useSearchLocation() {
 				const location: Location = {
 					city: res[0].name,
 					countryCode: res[0].country,
+					lat: res[0].lat,
+					lon: res[0].lon,
 				};
 				setLocation(location);
 				addToHistory(location);

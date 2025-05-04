@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSearchLocation } from '../features/searchLocation/useSearchLocation';
-import { Location } from '../types/location';
 import { useNavigate } from 'react-router-dom';
+import SearchHistory from '../features/searchHistory/searchHistory';
 
 export default function Search() {
 	const { result, error, isLoading, search } = useSearchLocation();
@@ -17,7 +17,7 @@ export default function Search() {
 	if (result) navigate('/');
 	return (
 		<>
-			<form onSubmit={handleSubmit} className='flex flex-row items-baseline gap-4'>
+			<form onSubmit={handleSubmit} className='flex flex-row items-baseline gap-4 mb-4'>
 				<span>
 					<input className='py-2 px-4 bg-white rounded-md shadow-md w-3xs' type='text' placeholder='Search country or city here...' name='searchQuery' />
 					{error && <p className='text-red-500'>Invalid country or city</p>}
@@ -27,6 +27,7 @@ export default function Search() {
 					{isLoading && <p>Loading...</p>}
 				</button>
 			</form>
+			<SearchHistory />
 		</>
 	);
 }

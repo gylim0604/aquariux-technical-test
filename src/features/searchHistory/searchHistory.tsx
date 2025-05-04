@@ -1,0 +1,41 @@
+import { Search, Trash } from 'lucide-react';
+import { useLocationStore } from '../searchLocation/useSearchLocation';
+import { Location } from '../../types/location';
+import { useNavigate } from 'react-router-dom';
+
+export default function SearchHistory() {
+	const { searchHistory, setLocation } = useLocationStore();
+	const navigate = useNavigate();
+
+	if (searchHistory.length === 0) return;
+
+	function goTo(el: Location): void {
+		setLocation(el);
+		navigate('/');
+	}
+
+	function deleteSearchItem(el: Location): void {
+		console.log('Delete search item');
+	}
+
+	return (
+		<div className='w-md '>
+			<h4 className='font-semibold mb-4'>Search History</h4>
+			<div className='bg-white p-4 rounded-xl shadow-md'>
+				{searchHistory.map((el) => (
+					<div key={`${el.lat}-${el.lon}`} className='flex flex-row gap-4 py-2'>
+						<p className='mr-auto'>
+							{el.city}, {el.countryCode}
+						</p>
+						<button type='button' onClick={() => goTo(el)} className='cursor-pointer'>
+							<Search size={18} />
+						</button>
+						<button type='button' onClick={() => deleteSearchItem(el)} className='cursor-pointer'>
+							<Trash size={18} />
+						</button>
+					</div>
+				))}
+			</div>
+		</div>
+	);
+}

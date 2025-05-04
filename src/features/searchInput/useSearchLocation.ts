@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { searchLocation } from './searchInput';
-import { GeoResult, Location } from '../../types/location';
-import { useLocationStore } from '../../stores/locationStore';
+import { GeoResult } from '../../types/location';
+import { useLocationStore, Location } from '../../shared';
 
 export function useSearchLocation() {
 	const [result, setResult] = useState<GeoResult[] | null>(null);

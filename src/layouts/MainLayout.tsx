@@ -1,6 +1,5 @@
-// src/layouts/LocationLayout.tsx
 import { Outlet } from 'react-router-dom';
-import { LocationBar } from '../features/locationBar/LocationBar';
+import { LocationBar } from '../shared';
 
 export default function MainLayout() {
 	return (

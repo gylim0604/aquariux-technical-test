@@ -1,8 +1,8 @@
 import { MapPin, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useLocationStore } from '../../stores/locationStore';
+import { useLocationStore } from '../stores/locationStore';
 
-export function LocationBar() {
+export default function LocationBar() {
 	const { currentLocation } = useLocationStore();
 
 	return (

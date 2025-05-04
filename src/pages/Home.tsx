@@ -1,10 +1,12 @@
-import { useLocation } from 'react-router-dom';
 import WeatherForecast from '../features/weatherForecast/WeatherForecast';
 import WeatherSummary from '../features/weatherSummary/WeatherSummary';
+import { useLocationStore } from '../features/searchLocation/useSearchLocation';
 
 export default function Home() {
-	const location = useLocation();
-	const { city, countryCode } = location.state || { city: 'Singapore', countryCode: '' };
+	const { currentLocation } = useLocationStore();
+
+	const city = currentLocation?.city || 'Singapore';
+	const countryCode = currentLocation?.city || 'SG';
 
 	return (
 		<>

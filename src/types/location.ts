@@ -10,3 +10,10 @@ export type Location = {
 	city: string;
 	countryCode: string;
 };
+
+export type LocationStore = {
+	currentLocation: Location | null;
+	searchHistory: Location[];
+	setLocation: (loc: Location) => void;
+	addToHistory: (loc: Location) => void;
+};

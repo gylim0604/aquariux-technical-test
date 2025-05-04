@@ -1,11 +1,40 @@
 import { useState } from 'react';
 import { searchLocation } from './searchLocation';
-import { GeoResult } from '../../types/location';
+import { GeoResult, Location, LocationStore } from '../../types/location';
+
+import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
+import { useShallow } from 'zustand/shallow';
+
+export const useLocationStore = create<LocationStore>()(
+	persist(
+		(set) => ({
+			currentLocation: null,
+			searchHistory: [],
+			setLocation: (loc) => set({ currentLocation: loc }),
+			addToHistory: (loc) =>
+				set((state) => ({
+					searchHistory: [...state.searchHistory, loc],
+				})),
+			clearHistory: () => set({ searchHistory: [] }),
+		}),
+		{
+			name: 'location-storage', // localStorage key
+			storage: createJSONStorage(() => localStorage),
+		}
+	)
+);
 
 export function useSearchLocation() {
-	const [result, setResult] = useState<GeoResult | null>(null);
+	const [result, setResult] = useState<GeoResult[] | null>(null);
 	const [error, setError] = useState<string | null>(null);
 	const [isLoading, setIsLoading] = useState(false);
+	const { setLocation, addToHistory } = useLocationStore(
+		useShallow((state) => ({
+			setLocation: state.setLocation,
+			addToHistory: state.addToHistory,
+		}))
+	);
 
 	async function search(query: string): Promise<void> {
 		setIsLoading(true);
@@ -17,6 +46,12 @@ export function useSearchLocation() {
 				setResult(null);
 			} else {
 				setResult(res);
+				const location: Location = {
+					city: res[0].name,
+					countryCode: res[0].country,
+				};
+				setLocation(location);
+				addToHistory(location);
 			}
 		} catch {
 			setError('Failed to search location');

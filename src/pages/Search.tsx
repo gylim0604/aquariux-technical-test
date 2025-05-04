@@ -14,14 +14,7 @@ export default function Search() {
 		await search(formData.get('searchQuery') as string);
 	}
 
-	if (result) {
-		console.log(result);
-		const location: Location = {
-			city: result.name,
-			countryCode: result.country,
-		};
-		navigate('/', { state: location });
-	}
+	if (result) navigate('/');
 	return (
 		<>
 			<form onSubmit={handleSubmit} className='flex flex-row items-baseline gap-4'>

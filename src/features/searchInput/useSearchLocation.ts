@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { searchLocation } from './searchLocation';
+import { searchLocation } from './searchInput';
 import { GeoResult, Location } from '../../types/location';
 import { useLocationStore } from '../../stores/locationStore';
 

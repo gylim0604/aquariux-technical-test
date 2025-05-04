@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { getCurrentWeather } from './weatherSummary';
-import { WeatherData } from '../../types/weatherSummary';
-import { Location } from '../../types/location';
+import { getCurrentWeather } from '../api/weatherSummary';
+import { Location } from '../../../shared';
+import { WeatherData } from '../types';
 
 export function useWeather(params: Location) {
 	const [data, setData] = useState<WeatherData | null>(null);

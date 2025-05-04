@@ -1,5 +1,5 @@
-import { Location } from '../../types/location';
-import { useWeather } from './useWeatherSummary';
+import { Location } from '../../../shared';
+import { useWeather } from '../hooks/useWeatherSummary';
 
 export default function WeatherSummary(params: Location) {
 	const { data, loading, error } = useWeather(params);

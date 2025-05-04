@@ -1,6 +1,6 @@
-import { get } from '../../lib/apiClient';
-import { Location } from '../../types/location';
-import { ForecastData } from '../../types/forecast';
+import { get } from '../../../lib/apiClient';
+import { Location } from '../../../shared';
+import { ForecastData } from '../types';
 
 export async function getWeatherForecast(params: Location): Promise<ForecastData> {
 	const { lat, lon } = params;

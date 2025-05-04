@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
-import { getWeatherForecast } from './weatherForecast';
-import { Location } from '../../types/location';
-import { ForecastData, GroupedForecast, List } from '../../types/forecast';
+import { getWeatherForecast } from '../api/weatherForecast';
+import { Location } from '../../../shared';
+import { ForecastData, ForecastEntry, GroupedForecast } from '../types';
 
 function processForecastData(data: ForecastData): any {
-	const grouped = data.list.reduce((prev: any, curr: List) => {
+	const grouped = data.list.reduce((prev: any, curr: ForecastEntry) => {
 		const date = curr.dt_txt.split(' ')[0];
 		if (!prev[date]) prev[date] = [];
 		prev[date].push(curr);
 		return prev;
-	}, {} as Record<string, List[]>);
+	}, {} as Record<string, ForecastEntry[]>);
 
 	return Object.entries(grouped).map(([date, entries]) => ({
 		date,

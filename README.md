@@ -1,54 +1,64 @@
-# React + TypeScript + Vite
+# Weather app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A concise description of your application:  
+A weather search app that lets users enter locations, view search history, and see extended weather forecasts powered by the OpenWeather API.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- **Location Search**: Type in a location to search and navigate.
+- **Search History**: View and clear recent searches.
+- **Weather Forecast**: Get a 5-day forecast for a selected location.
+- **State Persistence**: Remembers the last-used location across sessions.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 📁 Project Structure
+ ```bash
+    ├── src/
+    │   ├── features/
+    │   │   ├── search/        # SearchInput, SearchHistory, search logic
+    │   │   └── weather/       # WeatherSummary, WeatherForecast, weather logic
+    │   ├── shared/
+    │   │   ├── components/    # Reusable UI components (e.g., LocationBar)
+    │   │   └── store/         # Cross-cutting state (e.g., locationStore)
 ```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- Node.js v16+ or [Bun](https://bun.sh)
+- An OpenWeather API key
+
+### Installation
+
+1. Clone the repo:
+
+    ```bash
+    git clone https://github.com/your-org/your-repo.git
+    cd your-repo
+    ```
+2. Copy environment variables:
+    ```bash
+    cp .env.example .env
+    ```
+3. Install dependencies:
+    ```bash
+    # With Bun
+    bun install
+    
+    # Or with npm
+    npm install
+    ```
+4. Start the development server:
+    ```bash
+    # With Bun
+    bun dev
+    
+    # Or with npm
+    npm run dev
+    ```
+5. Open your browser to http://localhost:3000.

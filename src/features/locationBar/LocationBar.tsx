@@ -6,12 +6,12 @@ export function LocationBar() {
 	const { currentLocation } = useLocationStore();
 
 	return (
-		<div className='flex flex-row gap-2 w-md items-center justify-end'>
-			<MapPin size={18} />
-			<p className='font-semibold'>
+		<div className='flex flex-row gap-2 w-md items-center justify-between'>
+			<Link className='font-semibold flex flex-row items-center gap-2' to={'/'}>
+				<MapPin size={18} />
 				{currentLocation.city},{currentLocation.countryCode}
-			</p>
-			<Link to={'/search'} className='ml-auto'>
+			</Link>
+			<Link to={'/search'}>
 				<Search size={18} />
 			</Link>
 		</div>

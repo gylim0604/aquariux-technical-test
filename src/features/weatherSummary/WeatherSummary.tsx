@@ -22,10 +22,10 @@ export default function WeatherSummary(params: Location) {
 	if (error || !data) return <p> Error: {error}</p>;
 
 	return (
-		<div className='rounded-xl w-md bg-white shadow-md p-4 grid grid-rows-[1fr_3fr_2fr]'>
-			<div>{getCurrentDate()}</div>
+		<div className='rounded-xl w-sm bg-white shadow-sm p-4 grid grid-rows-[1fr_3fr_2fr]'>
+			<div className='text-zinc-700'>{getCurrentDate()}</div>
 			<div className='flex flex-row justify-evenly'>
-				<img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}.png`} alt='weather icon' />
+				<img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt='weather icon' />
 				<span>
 					<p className='text-4xl font-semibold tracking-wider'>{data?.main.temp.toFixed(0)}&deg;C</p>
 					<p className='text-zinc-700 first-letter:uppercase'>{data.weather[0]?.description}</p>
@@ -33,17 +33,17 @@ export default function WeatherSummary(params: Location) {
 			</div>
 			<div className='flex flex-row justify-evenly'>
 				<span className='text-center'>
-					<p className='text-zinc-400'>Humidity</p>
+					<p className='text-zinc-500'>Humidity</p>
 					<p className='font-semibold'>{data.main.humidity}%</p>
 				</span>
 				<span className='text-center'>
-					<p className='text-zinc-400'>Winds</p>
+					<p className='text-zinc-500'>Winds</p>
 					<p className='font-semibold '>
 						<span className={`inline-block text-sm rotate-[${data.wind.deg}deg]`}>&#129121;</span> {data.wind.speed} m/s
 					</p>
 				</span>
 				<span className='text-center'>
-					<p className='text-zinc-400'>Visibility</p>
+					<p className='text-zinc-500'>Visibility</p>
 					{/* TODO: Convert */}
 					<p className='font-semibold'>{metersToKm(data.visibility)} km</p>
 				</span>

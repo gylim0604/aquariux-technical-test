@@ -25,16 +25,16 @@ export default function WeatherForecast(params: Location) {
 	return (
 		<>
 			<h4 className='font-semibold mb-4'>5-day Forecast(3 Hours)</h4>
-			<div className='rounded-xl w-md bg-white shadow-md p-4 '>
+			<div className='rounded-xl w-sm bg-white shadow-sm p-4 '>
 				{data.map(({ date, entries }) => (
-					<div key={date} className='mt-8 first-of-type:mt-0'>
-						<h3 className='text-md text-zinc-400 mb-8 '>{convertDateString(date)}</h3>
+					<div key={date} className='mt-6 first-of-type:mt-0'>
+						<h3 className='text-md text-zinc-500 mb-4'>{convertDateString(date)}</h3>
 						{entries.map((el) => (
 							<div key={el.dt} className='flex flex-row items-center gap-4'>
 								<p className='font-semibold'>{formatTime(el.dt_txt)}</p>
 								<div className='flex flex-row items-center gap-2'>
 									<img src={`https://openweathermap.org/img/wn/${el.weather[0].icon}.png`} alt='weather icon' />
-									<p className='text-sm text-zinc-400'>
+									<p className='text-sm text-zinc-500'>
 										{el.main.temp_min.toFixed(2)} / {el.main.temp_max.toFixed(2)}&deg;C
 									</p>
 								</div>

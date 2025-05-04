@@ -25,7 +25,7 @@ export default function WeatherForecast(params: Location) {
 	return (
 		<>
 			<h4 className='font-semibold mb-4'>5-day Forecast(3 Hours)</h4>
-			<div className='rounded-xl w-sm bg-white shadow-sm p-4 '>
+			<div className='rounded-xl w-xs xs:w-sm bg-white shadow-sm p-4 '>
 				{data.map(({ date, entries }) => (
 					<div key={date} className='mt-6 first-of-type:mt-0'>
 						<h3 className='text-md text-zinc-500 mb-4'>{convertDateString(date)}</h3>

@@ -13,7 +13,7 @@ export default function SearchInput() {
 		await search(formData.get('searchQuery') as string);
 	}
 	return (
-		<form onSubmit={handleSubmit} className='flex flex-row items-baseline gap-4 w-sm'>
+		<form onSubmit={handleSubmit} className='flex flex-row items-baseline gap-4 w-xs xs:w-sm'>
 			<span className='grow'>
 				<input className='py-2 px-4 bg-white rounded-md shadow-sm w-full' type='text' placeholder='Search country or city here...' name='searchQuery' />
 				{error && <p className='text-red-500'>Invalid country or city</p>}

@@ -19,7 +19,7 @@ export default function SearchHistory() {
 	}
 
 	return (
-		<div className='w-sm'>
+		<div className='w-xs xs:w-sm'>
 			<h4 className='font-semibold mb-4'>Search History</h4>
 			<div className='bg-white py-6 px-4 rounded-xl shadow-sm'>
 				{searchHistory.map((el: Location) => (

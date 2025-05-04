@@ -22,7 +22,7 @@ export default function WeatherSummary(params: Location) {
 	if (error || !data) return <p> Error: {error}</p>;
 
 	return (
-		<div className='rounded-xl w-sm bg-white shadow-sm p-4 grid grid-rows-[1fr_3fr_2fr]'>
+		<div className='rounded-xl w-xs xs:w-sm bg-white shadow-sm p-4 grid grid-rows-[1fr_3fr_2fr]'>
 			<div className='text-zinc-700'>{getCurrentDate()}</div>
 			<div className='flex flex-row justify-evenly'>
 				<img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt='weather icon' />

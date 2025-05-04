@@ -18,4 +18,6 @@ export type LocationStore = {
 	searchHistory: Location[];
 	setLocation: (loc: Location) => void;
 	addToHistory: (loc: Location) => void;
+	removeFromHistory: (loc: Location) => void;
+	clearHistory: () => void;
 };

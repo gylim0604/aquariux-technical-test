@@ -1,28 +1,7 @@
 import { useState } from 'react';
 import { searchLocation } from './searchLocation';
-import { GeoResult, Location, LocationStore } from '../../types/location';
-
-import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
-
-export const useLocationStore = create<LocationStore>()(
-	persist(
-		(set) => ({
-			currentLocation: { city: 'Singapore', countryCode: 'SG', lat: 1.2907, lon: 103.8462 },
-			searchHistory: [],
-			setLocation: (loc) => set({ currentLocation: loc }),
-			addToHistory: (loc) =>
-				set((state) => ({
-					searchHistory: [...state.searchHistory, loc],
-				})),
-			clearHistory: () => set({ searchHistory: [] }),
-		}),
-		{
-			name: 'location-storage', // localStorage key
-			storage: createJSONStorage(() => localStorage),
-		}
-	)
-);
+import { GeoResult, Location } from '../../types/location';
+import { useLocationStore } from '../../stores/locationStore';
 
 export function useSearchLocation() {
 	const [result, setResult] = useState<GeoResult[] | null>(null);

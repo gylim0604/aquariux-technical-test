@@ -1,10 +1,10 @@
 import { Search, Trash } from 'lucide-react';
-import { useLocationStore } from '../searchLocation/useSearchLocation';
 import { Location } from '../../types/location';
 import { useNavigate } from 'react-router-dom';
+import { useLocationStore } from '../../stores/locationStore';
 
 export default function SearchHistory() {
-	const { searchHistory, setLocation } = useLocationStore();
+	const { searchHistory, setLocation, removeFromHistory } = useLocationStore();
 	const navigate = useNavigate();
 
 	if (searchHistory.length === 0) return;
@@ -15,14 +15,14 @@ export default function SearchHistory() {
 	}
 
 	function deleteSearchItem(el: Location): void {
-		console.log('Delete search item');
+		removeFromHistory(el);
 	}
 
 	return (
 		<div className='w-md '>
 			<h4 className='font-semibold mb-4'>Search History</h4>
 			<div className='bg-white p-4 rounded-xl shadow-md'>
-				{searchHistory.map((el) => (
+				{searchHistory.map((el: Location) => (
 					<div key={`${el.lat}-${el.lon}`} className='flex flex-row gap-4 py-2'>
 						<p className='mr-auto'>
 							{el.city}, {el.countryCode}

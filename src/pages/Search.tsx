@@ -1,5 +1,4 @@
-import SearchHistory from '../features/searchHistory/SearchHistory';
-import SearchInput from '../features/searchInput/SearchInput';
+import { SearchHistory, SearchInput } from '../features/search';
 
 export default function Search() {
 	return (

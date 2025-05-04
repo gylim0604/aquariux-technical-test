@@ -1,6 +1,6 @@
 import { Search, Trash } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useLocationStore, Location } from '../../shared';
+import { useLocationStore, Location } from '../../../shared';
 
 export default function SearchHistory() {
 	const { searchHistory, setLocation, removeFromHistory } = useLocationStore();

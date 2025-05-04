@@ -1,5 +1,5 @@
-import { get } from '../../lib/apiClient';
-import { GeoResult } from '../../types/location';
+import { get } from '../../../lib/apiClient';
+import { GeoResult } from '../types';
 
 export async function searchLocation(query: string): Promise<GeoResult[]> {
 	const parts = query.split(',').map((str) => str.trim());

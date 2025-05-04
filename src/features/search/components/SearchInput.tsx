@@ -1,11 +1,14 @@
 import { useNavigate } from 'react-router-dom';
-import { useSearchLocation } from './useSearchLocation';
+import { useSearchLocation } from '../hooks/useSearchLocation';
+import { useEffect } from 'react';
 
 export default function SearchInput() {
 	const { result, error, isLoading, search } = useSearchLocation();
 	const navigate = useNavigate();
 
-	if (result) navigate('/');
+	useEffect(() => {
+		if (result) navigate('/');
+	}, [result, navigate]);
 	async function handleSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
 		e.preventDefault();
 		const form = e.target as HTMLFormElement;

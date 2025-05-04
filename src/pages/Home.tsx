@@ -1,19 +1,17 @@
-import { LocationBar } from '../features/locationBar/LocationBar';
+import { useLocation } from 'react-router-dom';
 import WeatherForecast from '../features/weatherForecast/WeatherForecast';
 import WeatherSummary from '../features/weatherSummary/WeatherSummary';
 
 export default function Home() {
+	const location = useLocation();
+	const { city, countryCode } = location.state || { city: 'Singapore', countryCode: '' };
+
 	return (
-		<div className='bg-slate-200 '>
-			<div className='bg-white py-2 flex flex-col items-center mb-4 top-0 sticky shadow-sm'>
-				<LocationBar />
+		<>
+			<WeatherSummary city={city} countryCode={countryCode} />
+			<div className='py-4'>
+				<WeatherForecast city={city} countryCode={countryCode} />
 			</div>
-			<div className=' bg-slate-200 flex flex-col items-center'>
-				<WeatherSummary city={'Singapore'} countryCode={'SG'} />
-				<div className='py-4'>
-					<WeatherForecast city={'Singapore'} countryCode={'SG'} />
-				</div>
-			</div>
-		</div>
+		</>
 	);
 }
